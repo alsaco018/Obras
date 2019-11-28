@@ -13,14 +13,29 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload landing">
+	<?php 
+    session_start();
+    //print_r ($_SESSION);
+    ?>
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="index.html">Landed</a></h1>
+					<h1 id="logo"><a href="index.php">Landed</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+						<?php if(isset($_SESSION['usuario'])){?>
+											<li><a href="perfilUsuario.php"><?php echo $_SESSION['usuario']; ?></a></li>
+											<?php }else{ ?>
+												<li><a href="index.php">Home</a></li>
+										<?php }
+										if($_SESSION['perfil'] == 'administrador'){
+											?>
+											<li><a href="administrador.php" class="button">Administrar sitio</a></li>
+										<?php
+										}
+										?>
+							
 							<li>
 								<!--<a href="#">Layouts</a>
 								<ul>
@@ -38,8 +53,14 @@
 									</li>
 								</ul>-->
 							</li>
+
 							<li><a href="elements.html">Proyectos</a></li>
-							<li><a href="SignUp.html" class="button primary">Acceder/Registrarse</a></li>
+							<?php if(isset($_SESSION['usuario'])){
+                                            ?><li><a href="logOut.php" class="button primary">Cerrar sesión</a></li>
+                                        <?php }else{ ?>
+                                            <li><a href="SignUp.html" class="button primary">Acceder/Registrarse</a></li>
+                                        <?php }?>
+							
 						</ul>
 					</nav>
 				</header>
@@ -106,7 +127,7 @@
 
 			<!-- Three -->
 				<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="https://get.wallhere.com/photo/architecture-China-building-sky-symmetry-skyscraper-glass-modern-pattern-geometry-metal-construction-technology-lines-engineering-structure-Progress-finance-Future-design-line-mesh-daylighting-worldexpo-banking-modernity-economy-solarcollector-glassarchitecture-futiristic-geometricarchitecture-solarlightcollector-779577.jpg" alt="" /></span>
+					<span class="image fit main bottom"><img src="https://www.dentons.com/-/media/images/website/background-images/industry-sectors/construction/construction_06.jpg" alt="" /></span>
 					<div class="content">
 						<header>
 							<h2>Interdum felis blandit praesent sed augue</h2>

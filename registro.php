@@ -15,8 +15,7 @@
 <!-- partial -->
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-    <?php 
-            
+    <?php
             include('dbConfig.php');
             use PHPMailer\PHPMailer\PHPMailer;
             use PHPMailer\PHPMailer\Exception;
@@ -36,14 +35,17 @@
           
 
 
-          
+      
             $db or
             die("Connection failed: ");
-            
-            $sql = "select Usuario_nick from usuarios where Usuario_email = '".$email."'";//SELECT * FROM `usuarios` WHERE `Usuario_email`
+
+            $sql = "select Usuario_nick from usuarios where Usuario_email = '".$email."'";
                   //password_hash($password, PASSWORD_DEFAULT);
                   $result = mysqli_query($db,$sql);
-                  if(mysql_num_rows($sql)==0){ // no esta disponible
+                  if(mysql_num_rows($result)==0){ // no esta disponible
+                    //$resultado = mysqli_query($db,$sql);//$connection->query($sql);
+                    //$contador = mysqli_num_rows($resultado);
+                    //if($contador == 1) {
                     ?>
                     <!-- partial:index.partial.html -->
                     <p>
@@ -59,7 +61,7 @@
                     
                     try {
                       /* Set the mail sender. */
-                      $mailer->setFrom('albertosaldanadiw@gmail.com', 'Alberto');
+                      $mailer->setFrom('albertosaldanadiw@gmail.com', 'Landed Constructions');
                   
                       /* Add a recipient. */
                       $mailer->addAddress($email, 'Usuario');
@@ -70,7 +72,7 @@
                       /* Set the mail message body. */
                       $mailer->Body .= "<meta charset='UTF-8'><h1>Registro en Landed Constructions</h1><br><br>";
                       $mailer->Body .= "<h3>Estos son tus datos de registro:</h3><br>";
-                      $mailer->Body .= "<p>Usuario: ".$nick."<br>Contraseña: ".$pass."</p><br><br>";
+                      $mailer->Body .= "<p>Usuario: ".$nick."<br>Clave de acceso: ".$pass."</p><br><br>";
                       $mailer->Body .= "<p>Debes activar tu cuenta pulsando este enlace: <a href='http://www.albertosaldanacontreras.phpzilla.net/Examen/registroConfirmado.php?nick=<?php echo $nick;?>&pass=<?php echo $pass;?>&email=<?php echo $email;?>'>Confirmar correo</a>";
                       $mailer->IsHTML(true);
         
@@ -102,8 +104,9 @@
                   
                   
               }else{
+                //echo "aqui";
                 $error = "El correo ya existe.";
-                header("location: http://albertosaldanacontreras.phpzilla.net/Examen/signUp.php?error=<?php echo $error;?>");
+                header("location: http://albertosaldanacontreras.phpzilla.net/Examen/SignUp.php?error=<?php echo $error;?>");
                
               }
           ?>

@@ -34,7 +34,7 @@ $db or
 
 $email = $_REQUEST['email'];
 $pass = $_REQUEST['pass0'];
-$passHash = password_hash($pass, PASSWORD_DEFAULT);
+$passHash = hash('md5', $pass);
 
 $sql = "select Usuario_nick from usuarios where Usuario_email = '".$email."' and Usuario_clave = '".$passHash."' and Usuario_bloqueado = 0";
           //password_hash($password, PASSWORD_DEFAULT);

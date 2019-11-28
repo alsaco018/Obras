@@ -5,6 +5,12 @@
   <title>Log in / Registro</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
 <link rel="stylesheet" href="assets/css/logIn.css">
+<style>
+  #error{
+    color:red;
+  }
+  </style>
+
 <script type="text/javascript">
 
   function compruebaContrasenna(){
@@ -16,13 +22,16 @@
       }else{
         document.getElementById('formularioRegistro').action = "registro.php";
       }
-      
   }
   
 </script>
 </head>
 <body>
-  
+    <?php $error = ($_GET['error']);
+          
+          //borramos <?php echo ';?' de las variables
+        $error = str_replace("<?php echo ","",$error);
+        $error = str_replace(";?>","",$error); ?>
 <div class="login-wrap">
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Log in</label>
@@ -81,10 +90,13 @@
               <label for="tab-1">¿Ya perteneces a la web?</a>
             </div>
             </form>
-			</div>
+            </div>
+            
 		</div>
 	</div>
 </div>
-
+<div class="group" align="center">
+                <h2 id="error"><?php echo $error; ?></h2>
+            </div>
 </body>
 </html>
