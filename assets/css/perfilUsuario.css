@@ -4,8 +4,9 @@ html {
   height: 100%;
 }
 html body {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6)), url(http://terraquestint.com/wp-content/uploads/2016/01/con1.jpg) fixed;
+  background: linear-gradient(0deg, rgba(207, 78, 3, 0.63), rgba(155, 57, 0, 0.767)), url(http://terraquestint.com/wp-content/uploads/2016/01/con1.jpg) fixed;
   display: flex;
+  
   justify-content: center;
   height: 100%;
   font-size: 100%;
