@@ -42,6 +42,8 @@ function initialize() {
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.open(map, marker);
       });
+
+      document.getElementById('latitud').value = marker.getPosition();
   }
   
 
@@ -91,14 +93,16 @@ function initialize() {
       address = [
         (place.address_components[0] && place.address_components[0].short_name || ''),
         (place.address_components[1] && place.address_components[1].short_name || ''),
-        (place.address_components[2] && place.address_components[2].short_name || '')
-      ].join(' ');
+        (place.address_components[2] && place.address_components[2].short_name || ''),
+        (place.address_components[4] && place.address_components[4].short_name || '')
+      ].join(', ');
     }
 
     infowindowContent.children['place-icon'].src = place.icon;
     infowindowContent.children['place-name'].textContent = place.name;
     infowindowContent.children['place-address'].textContent = address;
     infowindow.open(map, marker);
+    document.getElementById('direccion').value = address;
   });
 
   // Sets a listener on a radio button to change the filter type on Places

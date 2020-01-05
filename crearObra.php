@@ -65,10 +65,37 @@
         
         <input name="nombre" type="text" id="nombre" size="30" placeholder="Nombre" >
           <br>
-          
-          <input name="jefe" type="number" id="jefe" size="30" placeholder="Jefe de la obra">
+          <select name="jefe" id="jefe" placeholder="Jefe de la obra" class='form-control'>
+          <?php
+          include('dbConfig.php');
+          session_start();
+            $db or
+            die("Connection failed: ");
+            $sql = "select * from usuarios where Usuario_perfil = 'jefe'";
+            //password_hash($password, PASSWORD_DEFAULT);
+            $result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
+            $nRegistros = mysqli_num_rows($result);
+            while($registro = mysqli_fetch_array($result)){
+                echo "<option value='".$registro['Usuario_id']."'>".$registro['Usuario_apellido1'].", ".$registro['Usuario_nombre']."</option>";
+            }
+            echo "</select><br>";
+          ?>
           <br>
-          <input name="cliente" type="number" id="cliente" size="30" placeholder="Cliente de la obra" >
+         <select name="cliente" id="cliente" placeholder="Cliente de la obra" class='form-control'>
+          <?php
+            $db or
+            die("Connection failed: ");
+            $sql = "select * from usuarios where Usuario_perfil = 'cliente'";
+            //password_hash($password, PASSWORD_DEFAULT);
+            $result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
+            $nRegistros = mysqli_num_rows($result);
+            while($registro = mysqli_fetch_array($result)){
+                echo "<option value='".$registro['Usuario_id']."'>".$registro['Usuario_apellido1'].", ".$registro['Usuario_nombre']."</option>";
+            }
+            echo "</select><br>";
+          ?>
+          <br>
+         
           <br>
           
         </fieldset>

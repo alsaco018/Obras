@@ -182,10 +182,10 @@ $_SESSION['usuario'] = $nick;
           $mailer->addAddress($email, 'Usuario');
        
           /* Set the subject. */
-          $mailer->Subject = 'Bloqueo de cuenta en La Gallina Violeta';
+          $mailer->Subject = 'Bloqueo de cuenta en Landed Constructions';
        
           /* Set the mail message body. */
-          $mailer->Body .= "<meta charset='UTF-8'><h1>Bloqueo de cuenta en La Gallina Violeta</h1><br><br>";
+          $mailer->Body .= "<meta charset='UTF-8'><h1>Bloqueo de cuenta en Landed Constructions</h1><br><br>";
           $mailer->Body .= "<h3>".$nick." tu cuenta se ha bloqueado</h3><br>";
           $mailer->Body .= "<p>Para reactivar tu cuenta pulsa este enlace: <a href='http://www.albertosaldanacontreras.phpzilla.net/Examen/reactivarCuenta.php?email=<?php echo $email;?>'>Reactivar cuenta</a>";
           $mailer->IsHTML(true);
