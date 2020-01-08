@@ -50,13 +50,13 @@ session_start();
 
 $db or
     die("Connection failed: ");
-    $sql = "select * from obras";
+    $sql = "select * from materiales";
     //password_hash($password, PASSWORD_DEFAULT);
     $result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
     $nRegistros = mysqli_num_rows($result);
     echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>Dirección</td><td>Jefe</td><td>Latitud</td><td>Longitud</td><td>Cliente</td></tr></thead>";
     while($registro = mysqli_fetch_array($result)){
-        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' value='".$registro['Obra_id']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Obra_nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Obra_direccion']."' id='direccion' name='direccion'></td><td><input type='number' value='".$registro['Obra_jefe']."' id='jefe' name='jefe'></td><td><input type='text' value='".$registro['Obra_latitud']."' id='latitud' name='latitud'></td><td><input type='text' value='".$registro['Obra_longitud']."' id='longitud' name='longitud'></td><td><input type='number' value='".$registro['Obra_cliente']."' id='cliente' name='cliente' disabled></td></tr></tbody></form>";
+        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' value='".$registro['Obra_id']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Obra_nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Obra_direccion']."' id='direccion' name='direccion'></td><td><input type='number' value='".$registro['Obra_jefe']."' id='jefe' name='jefe'></td><td><input type='text' value='".$registro['Obra_latitud']."' id='latitud' name='latitud'></td><td><input type='text' value='".$registro['Obra_longitud']."' id='longitud' name='longitud'></td><td><input type='number' value='".$registro['Obra_cliente']."' id='cliente' name='cliente'></td></tr></tbody></form>";
 
     }
     echo "</table></div><br><br> <div align='center' >
