@@ -54,15 +54,31 @@ $db or
     //password_hash($password, PASSWORD_DEFAULT);
     $result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
     $nRegistros = mysqli_num_rows($result);
-    echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>Dirección</td><td>Jefe</td><td>Latitud</td><td>Longitud</td><td>Cliente</td></tr></thead>";
+    echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>Precio (€)</td><td>Peso (kg)</td><td>Altura (cm)</td><td>Anchura (cm)</td><td>Profundidad (cm)</td><td>Proveedor </td><td>Descripción</td></tr></thead>";
     while($registro = mysqli_fetch_array($result)){
-        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' value='".$registro['Material_ID']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Material_Nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Material_Precio']."' id='precio' name='precio'></td><td><input type='number' value='".$registro['Material_Peso']."' id='peso' name='peso'></td><td><input type='text' value='".$registro['Material_Dimensiones_alto']."' id='altura' name='altura'></td><td><input type='text' value='".$registro['Material_Dimensiones_ancho']."' id='anchura' name='anchura'></td><td><input type='text' value='".$registro['Material_Dimensiones_profundo']."' id='profundidad' name='profundidad'></td><td><input type='text' value='".$registro['Material_Proveedor_ID']."' id='proveedor' name='proveedor'></td><td><input type='text' value='".$registro['Material_Foto']."' id='foto' name='foto'></td><td><input type='text' value='".$registro['Material_Descripcion']."' id='descripcion' name='descripcion'></td></tr></tbody></form>";
+        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' value='".$registro['Material_ID']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Material_Nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Material_Precio']."' id='precio' name='precio'></td><td><input type='text' value='".$registro['Material_Peso']."' id='peso' name='peso'></td><td><input type='text' value='".$registro['Material_Dimensiones_alto']."' id='altura' name='altura'></td><td><input type='text' value='".$registro['Material_Dimensiones_ancho']."' id='anchura' name='anchura'></td><td><input type='text' value='".$registro['Material_Dimensiones_profundo']."' id='profundidad' name='profundidad'></td><td><select name='proveedor' id='proveedor' class='form-control'>";
+        
+        $sql2 = "select * from proveedores where Proveedor_ID = ".$registro['Material_Proveedor_ID'];
+        //password_hash($password, PASSWORD_DEFAULT);
+        $result2 = mysqli_query($db,$sql2) or die("Problemas en el select 2".mysqli_error($db));
+        $nRegistros2 = mysqli_num_rows($result2);
+        while($registro2 = mysqli_fetch_array($result2)){
+            echo "<option value='".$registro2['Proveedor_ID']."' selected>".$registro2['Proveedor_Nombre']."</option>";
+        }
+        $sql3 = "select * from proveedores";
+        //password_hash($password, PASSWORD_DEFAULT);
+        $result3 = mysqli_query($db,$sql3) or die("Problemas en el select 3".mysqli_error($db));
+        $nRegistros3 = mysqli_num_rows($result3);
+        while($registro3 = mysqli_fetch_array($result3)){
+            echo "<option value='".$registro3['Proveedor_ID']."' selected>".$registro3['Proveedor_Nombre']."</option>";
+        }
+        echo "</select></td><td><input type='text' value='".$registro['Material_Descripcion']."' id='descripcion' name='descripcion'></td></tr></tbody></form>";
 
     }
     echo "</table></div><br><br> <div align='center' >
     <form>
-    <input type='submit' class='btn btn-danger' formaction='crearObra.php' value='Crear Obra'>
-    <input type='submit' class='btn btn-danger' formaction='trabajadoresObra.php' value='Agregar trabajadores a obra'>
+    <input type='submit' class='btn btn-danger' formaction='crearMaterial.php' value='Crear material'>
+    
     </form>
   </div> ";
 ?>

@@ -29,7 +29,7 @@
     <form method="post" action="creaMaterial.php" name="contactform" id="contactform" enctype="multipart/form-data">
       <div class="col-md-offset-1 col-md-3">
         <fieldset>
-          <input name="nombre" type="text" id="nombre" size="30" placeholder="Nombre" >
+          <input name="nombre" type="text" id="nombre" size="90" placeholder="Nombre" >
           <br>
           <input name="precio" type="text" id="precio" size="30" placeholder="Precio €">
           <br>
@@ -41,15 +41,30 @@
           <br>
           <input name="profundidad" type="text" id="profundidad" placeholder="Profundidad cm"size="30" >
           <br>
+          <select name='proveedor' id='proveedor' class='form-control'>
+          <?php
+          include('dbConfig.php');
+          session_start();
+
+          $db or
+              die("Connection failed: ");
+          $sql = "select * from proveedores";
+          //password_hash($password, PASSWORD_DEFAULT);
+          $result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
+          $nRegistros = mysqli_num_rows($result);
+          while($registro = mysqli_fetch_array($result)){
+              echo "<option value='".$registro['Proveedor_ID']."'>".$registro['Proveedor_Nombre']."</option>";
+          }
+          echo "</select><br>";
+    ?>
           <label for="foto" style="color:white;">Foto del material: </label><br />
           
           <input type="file" name="foto" id="foto" style="color:white;"><br />
           <br>
-
-          <textarea name="descripcion" id="descripcion">
+          </div>
           
         </fieldset>
-      </div>
+      
       <div class="col-md-7">
         <fieldset>
         
@@ -78,6 +93,10 @@
           
         </fieldset>
       </div>
+      <div class="col-md-offset-1 col-md-10">
+      <label for="descripcion" style="color:white;">Descripción: </label><br />
+          <textarea name="descripcion" id="descripcion"></textarea>
+          </div>
       <div class="col-md-offset-1 col-md-10">
         <fieldset>
           <input type="submit" class="btn btn-lg" id="submit" value="Guardar">
