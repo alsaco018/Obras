@@ -30,9 +30,11 @@
     <div class="col-md-3 col-sm-3 col-xs-6"> <a href="administracionUsuarios.php" class="btn btn-sm animated-button victoria-two">Usuarios</a> </div>
     <div class="col-md-3 col-sm-3 col-xs-6"> <a href="administracionProveedores.php" class="btn btn-sm animated-button victoria-three">Proveedores</a> </div>
     <div class="col-md-3 col-sm-3 col-xs-6"> <a href="administracionMateriales.php" class="btn btn-sm animated-button victoria-four">Materiales</a> </div>
+    <div class="col-md-3 col-sm-3 col-xs-6">  </div>
     <div class="col-md-3 col-sm-3 col-xs-6"> <a href="administracionEmpleados.php" class="btn btn-sm animated-button victoria-one">Empleados</a> </div>
-    <div class="col-md-3 col-sm-3 col-xs-6"> <a href="administracionLocales.php" class="btn btn-sm animated-button victoria-two">Locales</a> </div>
+    
     <div class="col-md-3 col-sm-3 col-xs-6"> <a href="listadoMaterialesObras.php" class="btn btn-sm animated-button victoria-three">Materiales de las obras</a> </div>
+    <div class="col-md-3 col-sm-3 col-xs-6">  </div>
   </div>
   <!--
   <div class="row">

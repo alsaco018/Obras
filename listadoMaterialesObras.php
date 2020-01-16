@@ -67,7 +67,7 @@ $db or
     while($registro = mysqli_fetch_array($result)){
         echo "<option value='".$registro['Obra_id']."'>".$registro['Obra_nombre']."</option>";
     }
-    echo "</select><br><br><label for='fechaInicio' style='margin-right:20%'>Fecha de inicio en la obra:</label><input type='date' name='fechaInicio' id='fechaInicio'><br><br><label for='fechaFin'style='margin-right:16.25%'>Fecha de finalización en la obra:</label><input type='date' name='fechaFin' id='fechaFin'><br><br><br><input type='submit' class='btn btn-danger' formaction='agregarTrabajadorObra.php' value='Agregar el trabajador a la obra'>"
+    echo "</select><br><br><label for='fechaInicio'>Fecha de inicio en la obra:</label><input type='date' name='fechaInicio' id='fechaInicio'><br><br><label for='fechaFin'>Fecha de finalización en la obra:</label><input type='date' name='fechaFin' id='fechaFin'><br><br><br><input type='submit' class='btn btn-danger' formaction='agregarTrabajadorObra.php' value='Agregar el trabajador a la obra'>"
 ?>
     </body>
 </html>
