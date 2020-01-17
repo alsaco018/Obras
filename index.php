@@ -111,7 +111,7 @@
 
 			<!-- Two -->
 				<section id="two" class="spotlight style2 right">
-					<span class="image fit main"><img src="http://www.hudoud.com/wp-content/uploads/2013/05/Engineering.jpg" alt="" /></span>
+					<span class="image fit main"><img src="http://www.aglgb.com/images/background/bg03.jpg" alt="" /></span>
 					<div class="content">
 						<header>
 							<h2>Interdum amet non magna accumsan</h2>

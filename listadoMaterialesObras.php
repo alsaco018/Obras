@@ -45,29 +45,29 @@
           <br><br><br>
           <div class="container">
             <form method="POST" action="">
-            <select name='trabajador' id='trabajador' class='form-control'>
+            <select name='obra' id='obra' class='form-control'>
 <?php
 include('dbConfig.php');
 session_start();
 
 $db or
     die("Connection failed: ");
-    $sql = "select * from usuarios where Usuario_perfil = 'trabajador'";
+    $sql = "select * from obras";
     //password_hash($password, PASSWORD_DEFAULT);
     $result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
     $nRegistros = mysqli_num_rows($result);
     while($registro = mysqli_fetch_array($result)){
-        echo "<option value='".$registro['Usuario_id']."'>".$registro['Usuario_apellido1'].", ".$registro['Usuario_nombre']."</option>";
+        echo "<option value='".$registro['Obra_id']."'>".$registro['Obra_nombre']."</option>";
     }
-    echo "</select><br><br><select name='obra' id='obra' class='form-control'>";
-    $sql2 = "select * from obras";
+    echo "</select><br><br><select name='material' id='material' class='form-control'>";
+    $sql2 = "select * from materiales";
     //password_hash($password, PASSWORD_DEFAULT);
     $result = mysqli_query($db,$sql2) or die("Problemas en el select 0".mysqli_error($db));
     $nRegistros = mysqli_num_rows($result);
     while($registro = mysqli_fetch_array($result)){
-        echo "<option value='".$registro['Obra_id']."'>".$registro['Obra_nombre']."</option>";
+        echo "<option value='".$registro['Material_ID']."'>".$registro['Material_Nombre']."</option>";
     }
-    echo "</select><br><br><label for='fechaInicio'>Fecha de inicio en la obra:</label><input type='date' name='fechaInicio' id='fechaInicio'><br><br><label for='fechaFin'>Fecha de finalización en la obra:</label><input type='date' name='fechaFin' id='fechaFin'><br><br><br><input type='submit' class='btn btn-danger' formaction='agregarTrabajadorObra.php' value='Agregar el trabajador a la obra'>"
+    echo "</select><br><br><br><input type='submit' class='btn btn-danger' formaction='agregarMaterialObra.php' value='Agregar el material a la obra'>"
 ?>
     </body>
 </html>
