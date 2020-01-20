@@ -36,7 +36,8 @@
         
           $obra = $_REQUEST['obra'];
           $material = $_REQUEST['material'];
-          
+          $cantidad = $_REQUEST['cantidad'];
+          $fecha = $_REQUEST['fecha'];
           
             //establecemos la conexion con la BD
           $db or
@@ -46,7 +47,7 @@
           $material = intval($material);
           $obra = intval($obra);
          
-          $sql = "INSERT INTO `materiales_obra`(`materiales_id`, `obras_id`, `usuario_id`, `cantidad`, `fecha`) VALUES (".$material.",".$obra.",19,[value-4],[value-5])";
+          $sql = "INSERT INTO `materiales_obra`(`materiales_id`, `obras_id`, `usuario_id`, `cantidad`, `fecha`) VALUES (".$material.",".$obra.",19,".$cantidad.",".$fecha.")";
           
           mysqli_query($db,$sql)
           or die("Problemas en el update".mysqli_error($db));

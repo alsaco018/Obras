@@ -67,7 +67,7 @@ $db or
     while($registro = mysqli_fetch_array($result)){
         echo "<option value='".$registro['Material_ID']."'>".$registro['Material_Nombre']."</option>";
     }
-    echo "</select><br><br><br><input type='submit' class='btn btn-danger' formaction='agregarMaterialObra.php' value='Agregar el material a la obra'>"
+    echo "</select><br><br><label for='cantidad'>Cantidad</label><br><input type='number' name='cantidad' id='cantidad' min='1' max='50'><br><br><label for='fecha'>Fecha</label><br><input type='date' name='fecha' id='fecha'><br><br><input type='submit' class='btn btn-danger' formaction='agregarMaterialObra.php' value='Agregar el material a la obra'>"
 ?>
     </body>
 </html>
