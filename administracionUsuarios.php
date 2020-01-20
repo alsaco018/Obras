@@ -42,6 +42,13 @@
             <br>
               <h2 align="center">Home</h2>
 						</nav>
+            <div align='center'>
+    <form>
+    <input type='submit' class='btn btn-danger' formaction='crearUsuario.php' value='Crear Usuario'>
+    
+    
+    </form>
+  </div> 
           </header>
           <br><br><br>
 <?php
@@ -59,13 +66,7 @@ $db or
         echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarUsuarios.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarUsuarios.php' value='Borrar'></td><td><input type='text' value='".$registro['Usuario_id']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Usuario_nombre']."' id='nombre' name='nombre'></td><td><input type='text' value='".$registro['Usuario_apellido1']."' id='apellido1' name='apellido1'></td><td><input type='text' value='".$registro['Usuario_apellido2']."' id='apellido2' name='apellido2'></td><td><input type='text' value='".$registro['Usuario_nick']."' id='nick' name='nick'></td> <td><input type='text' placeholder='".$registro['Usuario_clave']."' id='pass' name='pass'></td><td><input type='date' value='".$registro['Usuario_fecha_alta']."' id='fechaAlta' name='fechaAlta'></td><td><input type='text' value='".$registro['Usuario_email']."' id='email' name='email'></td><td><input type='text' value='".$registro['Usuario_bloqueado']."' id='bloqueado' name='bloqueado'></td><td><input type='date' value='".$registro['Usuario_fecha_bloqueo']."' id='fechaBloqueo' name='fechaBloqueo'></td><td><input type='text' value='".$registro['Usuario_numero_intentos']."' id='intentos' name='intentos'></td><td><input type='date' value='".$registro['Usuario_fecha_ultima_conexion']."' id='fechaUltConexion' name='fechaUltConexion'></td> <td><input type='text' value='".$registro['Usuario_token_aleatorio']."' id='token' name='token' disabled></td><td><input type='text' value='".$registro['Usuario_domicilio']."' id='direccion' name='direccion'></td><td><input type='text' value='".$registro['Usuario_poblacion']."' id='poblacion' name='poblacion'></td><td><input type='text' value='".$registro['Usuario_provincia']."' id='provincia' name='provincia'></td><td><input type='text' value='".$registro['Usuario_perfil']."' id='perfil' name='perfil'></td><td><input type='text' value='".$registro['Usuario_nif']."' id='nif' name='nif'></td><td><input type='text' value='".$registro['Usuario_numero_telefono']."' id='telefono' name='telefono'></td> <td><input type='text' value='".$registro['Usuario_fotografia']."' name='foto' id='foto'></td><td><input type='date' value='".$registro['Usuario_fecha_contratacion']."' name='fechaContratacion' id='fechaContratacion'></td></tr></tbody></form>";
 
     }
-    echo "</table></div><br><br> <div align='center'>
-    <form>
-    <input type='submit' class='btn btn-danger' formaction='crearUsuario.php' value='Crear Usuario'>
-    
-    
-    </form>
-  </div> ";
+    echo "</table></div><br><br> ";
 ?>
 </body>
 </html>

@@ -42,6 +42,13 @@
             <br>
               <h2 align="center">Home</h2>
 						</nav>
+            <div align='center'>
+    <form>
+    <input type='submit' class='btn btn-danger' formaction='crearProveedor.php' value='Crear Proveedor'>
+    
+    
+    </form>
+  </div> 
           </header>
           <br><br><br>
 <?php
@@ -56,16 +63,10 @@ $db or
     $nRegistros = mysqli_num_rows($result);
     echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>     Dirección     </td><td>     CIF     </td><td>     Persona de contacto </td><td>Teléfono</td><td>URL</td><td>Email</td></tr></thead>";
     while($registro = mysqli_fetch_array($result)){
-        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarProveedor.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarProveedor.php' value='Borrar'></td><td><input type='text' value='".$registro['Proveedor_ID']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Proveedor_Nombre']."' id='nombre' name='nombre'></td><td><input type='text' value='".$registro['Proveedor_Direccion']."' id='direccion' name='direccion'></td><td><input type='text' value='".$registro['Proveedor_CIF']."' id='cif' name='cif'></td><td><input type='text' value='".$registro['Proveedor_Persona_Contacto']."' id='contacto' name='contacto'></td> <td><input type='text' placeholder='".$registro['Proveedor_Telefono']."' id='telefono' name='telefono'></td><td><input type='text' value='".$registro['Proveedor_URL']."' id='url' name='url'></td><td><input type='text' value='".$registro['Proveedor_Email']."' id='email' name='email'></td></tr></tbody></form>";
+        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarProveedor.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarProveedor.php' value='Borrar'></td><td><input type='text' size='3' value='".$registro['Proveedor_ID']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Proveedor_Nombre']."' id='nombre' name='nombre'></td><td><input type='text' value='".$registro['Proveedor_Direccion']."' id='direccion' name='direccion'></td><td><input type='text' value='".$registro['Proveedor_CIF']."' id='cif' name='cif'></td><td><input type='text' value='".$registro['Proveedor_Persona_Contacto']."' id='contacto' name='contacto'></td> <td><input type='text' placeholder='".$registro['Proveedor_Telefono']."' id='telefono' name='telefono'></td><td><input type='text' value='".$registro['Proveedor_URL']."' id='url' name='url'></td><td><input type='text' value='".$registro['Proveedor_Email']."' id='email' name='email'></td></tr></tbody></form>";
 
     }
-    echo "</table></div><br><br> <div align='center'>
-    <form>
-    <input type='submit' class='btn btn-danger' formaction='crearProveedor.php' value='Crear Proveedor'>
-    
-    
-    </form>
-  </div> ";
+    echo "</table></div><br><br> ";
 ?>
 </body>
 </html>

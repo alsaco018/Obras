@@ -42,7 +42,14 @@
             <br>
               <h2 align="center">Home</h2>
 						</nav>
+            <div align='center' >
+    <form>
+    <input type='submit' class='btn btn-danger' formaction='crearMaterial.php' value='Crear material'>
+    
+    </form>
+  </div>
           </header>
+
           <br><br><br>
 <?php
 include('dbConfig.php');
@@ -56,7 +63,7 @@ $db or
     $nRegistros = mysqli_num_rows($result);
     echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><th>Editar</th><th>Eliminar</th><th>Id</th><th>     Nombre    </th><th>Precio (€)</th><th>Peso (kg)</th><th>Altura (cm)</th><th>Anchura (cm)</th><th>Profundidad (cm)</th><th>Proveedor </th><th></th><th>Descripción</th></tr></thead>";
     while($registro = mysqli_fetch_array($result)){
-        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' value='".$registro['Material_ID']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Material_Nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Material_Precio']."' id='precio' name='precio'></td><td><input type='text' value='".$registro['Material_Peso']."' id='peso' name='peso'></td><td><input type='text' value='".$registro['Material_Dimensiones_alto']."' id='altura' name='altura'></td><td><input type='text' value='".$registro['Material_Dimensiones_ancho']."' id='anchura' name='anchura'></td><td><input type='text' value='".$registro['Material_Dimensiones_profundo']."' id='profundidad' name='profundidad'></td><td colspan='2'><select name='proveedor' id='proveedor' class='form-control'>";
+        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' size='3' value='".$registro['Material_ID']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Material_Nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Material_Precio']."' id='precio' name='precio'></td><td><input type='text' value='".$registro['Material_Peso']."' id='peso' name='peso'></td><td><input type='text' value='".$registro['Material_Dimensiones_alto']."' id='altura' name='altura'></td><td><input type='text' value='".$registro['Material_Dimensiones_ancho']."' id='anchura' name='anchura'></td><td><input type='text' value='".$registro['Material_Dimensiones_profundo']."' id='profundidad' name='profundidad'></td><td colspan='2'><select name='proveedor' id='proveedor' class='form-control' style='width: 250px;'>";
         
         $sql2 = "select * from proveedores where Proveedor_ID = ".$registro['Material_Proveedor_ID'];
         //password_hash($password, PASSWORD_DEFAULT);
@@ -75,12 +82,7 @@ $db or
         echo "</select></td><td><input type='text' value='".$registro['Material_Descripcion']."' id='descripcion' name='descripcion'></td></tr></tbody></form>";
 
     }
-    echo "</table></div><br><br> <div align='center' >
-    <form>
-    <input type='submit' class='btn btn-danger' formaction='crearMaterial.php' value='Crear material'>
-    
-    </form>
-  </div> ";
+    echo "</table></div><br><br> ";
 ?>
 </body>
 </html>

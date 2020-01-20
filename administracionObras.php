@@ -42,6 +42,12 @@
             <br>
               <h2 align="center">Home</h2>
 						</nav>
+            <div align='center' >
+    <form>
+    <input type='submit' class='btn btn-danger' formaction='crearObra.php' value='Crear Obra'>
+    <input type='submit' class='btn btn-danger' formaction='trabajadoresObra.php' value='Agregar trabajadores a obra'>
+    </form>
+  </div>
           </header>
           <br><br><br>
 <?php
@@ -56,7 +62,7 @@ $db or
     $nRegistros = mysqli_num_rows($result);
     echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>Dirección</td><td>Jefe</td><td>Latitud</td><td>Longitud</td><td>Cliente</td></tr></thead>";
     while($registro = mysqli_fetch_array($result)){
-        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' value='".$registro['Obra_id']."' id='id' name='id' disabled></td><td size='90'><input type='text' value='".$registro['Obra_nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Obra_direccion']."' id='direccion' name='direccion'></td><td><select name='jefe' id='jefe' class='form-control' >";
+        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' size='5' value='".$registro['Obra_id']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Obra_nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Obra_direccion']."' id='direccion' name='direccion'></td><td><select name='jefe' id='jefe' class='form-control' style='width: 250px;'>";
         
         $sql2 = "select * from usuarios where Usuario_id = ".$registro['Obra_jefe'];
         //password_hash($password, PASSWORD_DEFAULT);
@@ -73,7 +79,7 @@ $db or
             echo "<option value='".$registro3['Usuario_id']."' selected>".$registro3['Usuario_apellido1']." ".$registro3['Usuario_apellido2'].", ".$registro3['Usuario_nombre']."</option>";
         }
         echo "</select></td><td><input type='text' value='".$registro['Obra_latitud']."' id='latitud' name='latitud'></td><td><input type='text' value='".$registro['Obra_longitud']."' id='longitud' name='longitud'></td>
-        <td><select name='jefe' id='jefe' class='form-control' >";
+        <td><select name='cliente' id='cliente' class='form-control' style='width: 250px;'>";
         
         $sql2 = "select * from usuarios where Usuario_id = ".$registro['Obra_cliente'];
         //password_hash($password, PASSWORD_DEFAULT);
@@ -92,12 +98,7 @@ $db or
         echo "</select></td></tr></tbody></form>";
 
     }
-    echo "</table></div><br><br> <div align='center' >
-    <form>
-    <input type='submit' class='btn btn-danger' formaction='crearObra.php' value='Crear Obra'>
-    <input type='submit' class='btn btn-danger' formaction='trabajadoresObra.php' value='Agregar trabajadores a obra'>
-    </form>
-  </div> ";
+    echo "</table></div><br><br> ";
 ?>
 </body>
 </html>

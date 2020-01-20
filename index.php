@@ -34,6 +34,12 @@
 											<li><a href="administrador.php" class="button">Administrar sitio</a></li>
 										<?php
 										}
+										
+										if($_SESSION['perfil'] == 'jefe'){
+											?>
+											<li><a href="listadoMaterialesObras.php" class="button">Agregar materiales a una obra</a></li>
+										<?php
+										}
 										?>
 							
 							<li>

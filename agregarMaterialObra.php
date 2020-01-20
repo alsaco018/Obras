@@ -14,7 +14,7 @@
 <body>
 <!-- partial:index.partial.html -->
 <p>
-  Se ha agregado el trabajador
+  Se ha agregado el material
   <span>
     a la obra.
   </span>
@@ -47,7 +47,7 @@
           $material = intval($material);
           $obra = intval($obra);
          
-          $sql = "INSERT INTO `materiales_obra`(`materiales_id`, `obras_id`, `usuario_id`, `cantidad`, `fecha`) VALUES (".$material.",".$obra.",19,".$cantidad.",".$fecha.")";
+          $sql = "INSERT INTO `materiales_obra`(`materiales_id`, `obras_id`, `usuario_id`, `cantidad`, `fecha`) VALUES (".$material.",".$obra.",19,".$cantidad.",'".$fecha."')";
           
           mysqli_query($db,$sql)
           or die("Problemas en el update".mysqli_error($db));
