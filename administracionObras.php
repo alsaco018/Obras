@@ -76,7 +76,7 @@ $db or
         $result3 = mysqli_query($db,$sql3) or die("Problemas en el select 3".mysqli_error($db));
         $nRegistros3 = mysqli_num_rows($result3);
         while($registro3 = mysqli_fetch_array($result3)){
-            echo "<option value='".$registro3['Usuario_id']."' selected>".$registro3['Usuario_apellido1']." ".$registro3['Usuario_apellido2'].", ".$registro3['Usuario_nombre']."</option>";
+            echo "<option value='".$registro3['Usuario_id']."' >".$registro3['Usuario_apellido1']." ".$registro3['Usuario_apellido2'].", ".$registro3['Usuario_nombre']."</option>";
         }
         echo "</select></td><td><input type='text' value='".$registro['Obra_latitud']."' id='latitud' name='latitud'></td><td><input type='text' value='".$registro['Obra_longitud']."' id='longitud' name='longitud'></td>
         <td><select name='cliente' id='cliente' class='form-control' style='width: 250px;'>";

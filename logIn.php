@@ -102,7 +102,14 @@ $sql = "select Usuario_perfil from usuarios where Usuario_email = '".$email."' a
 $result = mysqli_query($db,$sql) or die("Problemas en el select 3".mysqli_error($db));
 $result = $result->fetch_array();
 $perfil = $result[0];
-          
+
+$sql = "select Usuario_id from usuarios where Usuario_email = '".$email."' and Usuario_clave = '".$passHash."' and Usuario_bloqueado = 0";
+//password_hash($password, PASSWORD_DEFAULT);
+$result = mysqli_query($db,$sql) or die("Problemas en el select 3".mysqli_error($db));
+$result = $result->fetch_array();
+$id = $result[0];
+    
+$_SESSION['id'] = $id;
 $_SESSION['nombre'] = $nombre;
 $_SESSION['apellido1'] = $apellido1;
 $_SESSION['apellido2'] = $apellido2;
