@@ -97,7 +97,9 @@
           <br>
          
           <br>
+          <label for="foto" style="color:white;">Foto de la obra: </label><br />
           
+          <input type="file" name="foto" id="foto" style="color:white;"><br />
         </fieldset>
       </div>
       <div class="col-md-offset-1 col-md-10">

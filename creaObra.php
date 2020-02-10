@@ -49,10 +49,30 @@
          $latitud = floatval($latitud);
          $longitud = floatval($longitud);
 
+         if($_FILES['foto']['tmp_name'] != null){
+          copy($_FILES['foto']['tmp_name'],$_FILES['foto']['name']);
+          //$_FILES['foto']['name'] = "images/".$_FILES['foto']['name'];
+
+          $nom = $_FILES['foto']['name'];
+          $target_dir= "images/";//la foto que vayas subiendo ira guardandose en la carpeta images, sino tienes esta carpeta no subira el archivo.
+          $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+        }
+
           $sql = "INSERT INTO `obras`(`Obra_id`, `Obra_nombre`, `Obra_direccion`, `Obra_jefe`, `Obra_latitud`, `Obra_longitud`, `Obra_cliente`) VALUES (0,'".$nombre."','".$direccion."',".$jefe.",".$latitud.",".$longitud.",".$cliente.")";
           //echo $sql;
           //password_hash($password, PASSWORD_DEFAULT); Usuario_fotografia`=[value-20]
           mysqli_query($db,$sql)
+          or die("Problemas en el update".mysqli_error($db));
+          $sql2 = "select Obra_id from obras where Obra_nombre = '".$nombre."'";
+            //password_hash($password, PASSWORD_DEFAULT);
+            $result = mysqli_query($db,$sql2) or die("Problemas en el select 0".mysqli_error($db));
+            $nRegistros = mysqli_num_rows($result);
+            while($registro = mysqli_fetch_array($result)){
+                $id = $registro['Obra_id'];
+            }
+            $fecha = date("y.m.d");
+          $sql3 = "INSERT INTO `fotos`(`obra_id`, `foto`, `fecha`) VALUES (".$id.",'".$nom."','".$fecha."')";
+          mysqli_query($db,$sql3)
           or die("Problemas en el update".mysqli_error($db));
           mysqli_close($db);
         
