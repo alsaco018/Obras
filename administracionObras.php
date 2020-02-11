@@ -60,8 +60,9 @@ $db or
     //password_hash($password, PASSWORD_DEFAULT);
     $result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
     $nRegistros = mysqli_num_rows($result);
-    echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>Dirección</td><td>Jefe</td><td>Latitud</td><td>Longitud</td><td>Cliente</td></tr></thead>";
+    echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>Dirección</td><td>Jefe</td><td>Latitud</td><td>Longitud</td><td>Cliente</td><td>Foto</td></tr></thead>";
     while($registro = mysqli_fetch_array($result)){
+      $id = $registro['Obra_id'];
         echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' size='5' value='".$registro['Obra_id']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Obra_nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Obra_direccion']."' id='direccion' name='direccion'></td><td><select name='jefe' id='jefe' class='form-control' style='width: 250px;'>";
         
         $sql2 = "select * from usuarios where Usuario_id = ".$registro['Obra_jefe'];
@@ -95,7 +96,16 @@ $db or
         while($registro3 = mysqli_fetch_array($result3)){
             echo "<option value='".$registro3['Usuario_id']."' selected>".$registro3['Usuario_apellido1']." ".$registro3['Usuario_apellido2'].", ".$registro3['Usuario_nombre']."</option>";
         }
-        echo "</select></td></tr></tbody></form>";
+        echo "</select></td><td>";
+        $sql4 = "select * from fotos where obra_id = ".$id;
+        
+        $result4 = mysqli_query($db,$sql4) or die("Problemas en el select 0".mysqli_error($db));
+        
+        while($registro4 = mysqli_fetch_array($result4)){
+          $fotoActual = $registro4['foto'];
+          $idObra = $registro4['obra_id']; 
+        }
+        echo "<div><img src='".$fotoActual."' width='40%' height='40%'></div><input type='file' name='foto' id='foto' style='color:white;'><input type='text' size='5' value='".$registro['Obra_id']."' id='id2' name='id2' hidden></td></form></tr></tbody>";
 
     }
     echo "</table></div><br><br> ";

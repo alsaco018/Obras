@@ -14,7 +14,11 @@
 	</head>
 	<body class="is-preload landing">
 	<?php 
-    session_start();
+	include('dbConfig.php');
+	session_start();
+	$db or
+    die("Connection failed: ");
+
     //print_r ($_SESSION);
     ?>
 		<div id="page-wrapper">
@@ -151,41 +155,43 @@
 				<section id="four" class="wrapper style1 special fade-up">
 					<div class="container">
 						<header class="major">
-							<h2>Accumsan sed tempus adipiscing blandit</h2>
-							<p>Iaculis ac volutpat vis non enim gravida nisi faucibus posuere arcu consequat</p>
+							<h2>Obras</h2>
+							<p>Nuestras últimas obras.</p>
 						</header>
 						<div class="box alt">
 							<div class="row gtr-uniform">
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-chart-area"></span>
+								
+									<!--<span class="icon solid alt major fa-chart-area"></span>
 									<h3>Ipsum sed commodo</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-comment"></span>
-									<h3>Eleifend lorem ornare</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-flask"></span>
-									<h3>Cubilia cep lobortis</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-paper-plane"></span>
-									<h3>Non semper interdum</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-file"></span>
-									<h3>Odio laoreet accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
-								<section class="col-4 col-6-medium col-12-xsmall">
-									<span class="icon solid alt major fa-lock"></span>
-									<h3>Massa arcu accumsan</h3>
-									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>
-								</section>
+									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>-->
+									<?php
+									$sql = "select * from fotos order by fecha asc limit 3";
+									$foto = []; $idsObra = [];$nObras = 0;
+									$result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
+									
+									while($registro = mysqli_fetch_array($result)){
+										$foto[] = $registro['foto'];
+										$idsObra[] = $registro['obra_id']; 
+										$nObras++;
+										
+										
+									}
+
+									for($i = 0; $i < $nObras; ++$i){
+
+										echo "<section class='col-4 col-6-medium col-12-xsmall'><div><img src='".$foto[$i]."' width='70%' height='70%'></div>";
+										$sql2 = "select Obra_nombre, Obra_direccion from obras where Obra_id = ".$idsObra[$i];
+										$result2 = mysqli_query($db,$sql2) or die("Problemas en el select 1".mysqli_error($db));
+										while($registro2 = mysqli_fetch_array($result2)){
+											echo "<h2>".$registro2['Obra_nombre']."</h2><br>
+											<h4>".$registro2['Obra_direccion']."</h4></section>";
+										}
+									}
+									
+									
+
+									?>
+								
 							</div>
 						</div>
 						<footer class="major">

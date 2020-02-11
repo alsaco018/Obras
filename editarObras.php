@@ -40,7 +40,8 @@
           $latitud = $_REQUEST['latitud'];
           $longitud = $_REQUEST['longitud'];
           $direccion = $_REQUEST['direccion'];
-         
+          $id = $_REQUEST['id2'];
+          $fotito = $_REQUEST['foto'.$id];
             //establecemos la conexion con la BD
           $db or
               die("Connection failed: ");
@@ -48,13 +49,28 @@
          $latitud = floatval($latitud);
          $longitud = floatval($longitud);
 
-          $sql = "UPDATE `obras` SET `Obra_nombre`='".$nombre."',`Obra_direccion`='".$direccion."',`Obra_jefe`=".$jefe.",`Obra_latitud`=".$latitud.",`Obra_longitud`=".$longitud.",`Obra_cliente`=".$cliente." WHERE `Obra_nombre`='".$nombre."'";
+          $sql = "UPDATE `obras` SET `Obra_nombre`='".$nombre."',`Obra_direccion`='".$direccion."',`Obra_jefe`=".$jefe.",`Obra_latitud`=".$latitud.",`Obra_longitud`=".$longitud.",`Obra_cliente`=".$cliente." WHERE `Obra_id`='".$id."'";
           //echo $sql;
           //password_hash($password, PASSWORD_DEFAULT); Usuario_fotografia`=[value-20]
           mysqli_query($db,$sql)
           or die("Problemas en el update".mysqli_error($db));
+          
+          if($fotito != null){
+            $nom = $fotito;
+            copy($_FILES['foto']['tmp_name'],$_FILES['foto']['name']);
+            //$_FILES['foto']['name'] = "images/".$_FILES['foto']['name'];
+            $target_dir= "images/";//la foto que vayas subiendo ira guardandose en la carpeta images, sino tienes esta carpeta no subira el archivo.
+            $target_file = $target_dir . basename($fotito);
+          }
+  
+
+          $fecha = date("y.m.d");
+          $sql3 = "UPDATE fotos SET foto='".$nom."',fecha='".$fecha."' WHERE `obra_id`= ".$id;
+          
+          mysqli_query($db,$sql3)
+          or die("Problemas en el update".mysqli_error($db));
           mysqli_close($db);
-        
+          move_uploaded_file($fotito,$target_file);
          
         
          
