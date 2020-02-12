@@ -20,7 +20,7 @@
   </span>
  
 </p>
-<p style="margin-top: 35%">
+<p style="margin-top: 25%">
 
   
   <a style="text-decoration:none;color:white;" href="http://albertosaldanacontreras.phpzilla.net/Examen/administracionObras.php" data-toggle="tooltip" data-placement="bottom" title="Volver a la página de administración de usuarios">&mdash; Volver a la página de administración de obras &mdash;</a>
@@ -41,7 +41,7 @@
           $longitud = $_REQUEST['longitud'];
           $direccion = $_REQUEST['direccion'];
           $id = $_REQUEST['id2'];
-          $fotito = $_REQUEST['foto'.$id];
+          $fotito = $_REQUEST['foto'];
             //establecemos la conexion con la BD
           $db or
               die("Connection failed: ");
@@ -55,22 +55,22 @@
           mysqli_query($db,$sql)
           or die("Problemas en el update".mysqli_error($db));
           
-          if($fotito != null){
-            $nom = $fotito;
+          if($_FILES['foto']['tmp_name'] != null){
             copy($_FILES['foto']['tmp_name'],$_FILES['foto']['name']);
             //$_FILES['foto']['name'] = "images/".$_FILES['foto']['name'];
-            $target_dir= "images/";//la foto que vayas subiendo ira guardandose en la carpeta images, sino tienes esta carpeta no subira el archivo.
-            $target_file = $target_dir . basename($fotito);
-          }
   
-
-          $fecha = date("y.m.d");
-          $sql3 = "UPDATE fotos SET foto='".$nom."',fecha='".$fecha."' WHERE `obra_id`= ".$id;
+            $nom = $_FILES['foto']['name'];
+            $target_dir= "images/";//la foto que vayas subiendo ira guardandose en la carpeta images, sino tienes esta carpeta no subira el archivo.
+            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+            $fecha = date("y.m.d");
+            $sql3 = "UPDATE fotos SET foto='".$nom."',fecha='".$fecha."' WHERE `obra_id`= ".$id;
+            
+            mysqli_query($db,$sql3)
+            or die("Problemas en el update".mysqli_error($db));
+          }
           
-          mysqli_query($db,$sql3)
-          or die("Problemas en el update".mysqli_error($db));
           mysqli_close($db);
-          move_uploaded_file($fotito,$target_file);
+          move_uploaded_file($_FILES['foto']['tmp_name'],$target_file);
          
         
          

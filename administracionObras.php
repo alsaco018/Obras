@@ -63,7 +63,7 @@ $db or
     echo "<div class=' table-responsive'><table class='table table-dark table-hover'><thead><tr><td>Editar</td><td>Eliminar</td><td>Id</td><td>     Nombre    </td><td>Dirección</td><td>Jefe</td><td>Latitud</td><td>Longitud</td><td>Cliente</td><td>Foto</td></tr></thead>";
     while($registro = mysqli_fetch_array($result)){
       $id = $registro['Obra_id'];
-        echo "<form action='' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' size='5' value='".$registro['Obra_id']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Obra_nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Obra_direccion']."' id='direccion' name='direccion'></td><td><select name='jefe' id='jefe' class='form-control' style='width: 250px;'>";
+        echo "<form action='' enctype='multipart/form-data' method='POST'><tbody><tr><td><input type='submit' class='btn btn-danger' formaction='editarObras.php' value='Editar'></td><td><input type='submit' class='btn btn-danger' formaction='borrarObras.php' value='Borrar'></td><td><input type='text' size='5' value='".$registro['Obra_id']."' id='id' name='id' disabled></td><td><input type='text' value='".$registro['Obra_nombre']."' id='nombre' name='nombre'><td><input type='text' value='".$registro['Obra_direccion']."' id='direccion' name='direccion'></td><td><select name='jefe' id='jefe' class='form-control' style='width: 250px;'>";
         
         $sql2 = "select * from usuarios where Usuario_id = ".$registro['Obra_jefe'];
         //password_hash($password, PASSWORD_DEFAULT);
@@ -105,7 +105,7 @@ $db or
           $fotoActual = $registro4['foto'];
           $idObra = $registro4['obra_id']; 
         }
-        echo "<div><img src='".$fotoActual."' width='40%' height='40%'></div><input type='file' name='foto' id='foto' style='color:white;'><input type='text' size='5' value='".$registro['Obra_id']."' id='id2' name='id2' hidden></td></form></tr></tbody>";
+        echo "<div><img src='".$fotoActual."' width='40%' height='40%'></div><input type='file' name='foto'  style='color:white;'><input type='text' size='5' value='".$registro['Obra_id']."' id='id2' name='id2' hidden></td></form></tr></tbody>";
 
     }
     echo "</table></div><br><br> ";
