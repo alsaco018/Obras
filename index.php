@@ -64,7 +64,7 @@
 								</ul>-->
 							</li>
 
-							<li><a href="elements.html">Proyectos</a></li>
+							
 							<?php if(isset($_SESSION['usuario'])){
                                             ?><li><a href="logOut.php" class="button primary">Cerrar sesión</a></li>
                                         <?php }else{ ?>
@@ -165,7 +165,7 @@
 									<h3>Ipsum sed commodo</h3>
 									<p>Feugiat accumsan lorem eu ac lorem amet accumsan donec. Blandit orci porttitor.</p>-->
 									<?php
-									$sql = "select * from fotos order by fecha asc limit 3";
+									$sql = "select * from fotos order by fecha desc limit 3";
 									$foto = []; $idsObra = [];$nObras = 0;
 									$result = mysqli_query($db,$sql) or die("Problemas en el select 0".mysqli_error($db));
 									
@@ -196,7 +196,7 @@
 						</div>
 						<footer class="major">
 							<ul class="actions special">
-								<li><a href="#" class="button">Magna sed feugiat</a></li>
+								<li><a href="todasObras.php" class="button">Ver obras</a></li>
 							</ul>
 						</footer>
 					</div>

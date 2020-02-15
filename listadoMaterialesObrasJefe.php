@@ -41,6 +41,9 @@
             <br>
               <h2 align="center">Home</h2>
 						</nav>
+            <div align="center">
+            <a class='btn btn-danger' href='administrador.php' style="text-decoration: none;">Volver al menú de administración</a>
+            </div>
           </header>
           <br><br><br>
           <div class="container">

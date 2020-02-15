@@ -46,6 +46,7 @@
     <form>
     <input type='submit' class='btn btn-danger' formaction='crearObra.php' value='Crear Obra'>
     <input type='submit' class='btn btn-danger' formaction='trabajadoresObra.php' value='Agregar trabajadores a obra'>
+    <input type='submit' class='btn btn-danger' formaction='administrador.php' value='Volver al menú de administración'>
     </form>
   </div>
           </header>

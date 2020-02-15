@@ -45,7 +45,7 @@
             <div align='center'>
     <form>
     <input type='submit' class='btn btn-danger' formaction='crearProveedor.php' value='Crear Proveedor'>
-    
+    <input type='submit' class='btn btn-danger' formaction='administrador.php' value='Volver al menú de administración'>
     
     </form>
   </div> 

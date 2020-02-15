@@ -53,7 +53,7 @@
           copy($_FILES['foto']['tmp_name'],$_FILES['foto']['name']);
           //$_FILES['foto']['name'] = "images/".$_FILES['foto']['name'];
 
-          $nom = $_FILES['foto']['name'];
+          $nom = "images/".$_FILES['foto']['name'];
           $target_dir= "images/";//la foto que vayas subiendo ira guardandose en la carpeta images, sino tienes esta carpeta no subira el archivo.
           $target_file = $target_dir . basename($_FILES["foto"]["name"]);
         }

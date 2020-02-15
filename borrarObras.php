@@ -68,6 +68,9 @@
           mysqli_query($db,$sql)
           or die("Problemas en el update 1".mysqli_error($db));
 
+          $sql = "DELETE from fotos WHERE obra_id = ".$idObra;
+          mysqli_query($db,$sql)
+          or die("Problemas en el update 2".mysqli_error($db));
 
 /*
           $sql = "DELETE from trabajadores_obra where obra_id = ".$idObra."";

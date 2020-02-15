@@ -12,7 +12,10 @@
   <div class="container">
     
     <h1>Menú de administración</h1>
-    <p style="color:#e44c65;">Tú tienes el poder...</p>
+    <p style="color:#e44c65;">Tú tienes el poder...</p><br>
+    <div align="center">
+            <a class='btn btn-danger' href='index.php' style="text-decoration: none;">Home</a>
+            </div>
     
   </div>
 </div>
