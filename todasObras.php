@@ -32,7 +32,13 @@
 									}
 
 									for($i = 0; $i < $nObras; ++$i){
-										
+										echo "<section class='col-4 col-6-medium col-12-xsmall'><div><img src='".$fotos[$i]."' width='70%' height='70%'></div>";
+										$sql2 = "select Obra_nombre, Obra_direccion from obras where Obra_id = ".$idsObra[$i];
+										$result2 = mysqli_query($db,$sql2) or die("Problemas en el select 1".mysqli_error($db));
+										while($registro2 = mysqli_fetch_array($result2)){
+											echo "<h2>".$registro2['Obra_nombre']."</h2><br>
+											<h4>".$registro2['Obra_direccion']."</h4></section>";
+										}
 									}
 									?>
 
